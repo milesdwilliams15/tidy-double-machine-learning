@@ -6,22 +6,22 @@
 # packages ----------------------------------------------------------------
 
 # make sure you have the necessary packages
-# your_packages   <- available.packages()[, 1]
-# needed_packages <- c("tidyverse",
-#                      "tidymodels",
-#                      "lmtest",
-#                      "sandwich",
-#                      "lme4",
-#                      "dotwhisker")
-# any_missing <- !all(needed_packages %in% your_packages)
-# if(any_missing) {
-#   `%nin%` <- Negate(`%in%`)
-#   which_is_missing <- which(
-#     needed_packages %nin% your_packages
-#   )
-#   stop("You need to install the following packages:\n",
-#        paste0(needed_packages[which_is_missing], collapse = ", "))
-# }
+your_packages   <- available.packages()[, 1]
+needed_packages <- c("tidyverse",
+                     "tidymodels",
+                     "lmtest",
+                     "sandwich",
+                     "lme4",
+                     "dotwhisker")
+any_missing <- !all(needed_packages %in% your_packages)
+if(any_missing) {
+  `%nin%` <- Negate(`%in%`)
+  which_is_missing <- which(
+    needed_packages %nin% your_packages
+  )
+  stop("You need to install the following packages:\n",
+       paste0(needed_packages[which_is_missing], collapse = ", "))
+}
 
 # if you have them, load them
 library(tidyverse)
@@ -414,6 +414,15 @@ cat(
 )
 
 # examples ----------------------------------------------------------------
+if(exists("run_examples")) {
+  run_examples <- F
+  cat(
+    "\n",
+    "Note: run_examples == FALSE\n",
+    "If you want to run example code, set run_examples <- TRUE then re-run source code."
+  )
+}
+
 if(run_examples) {
   ## simulate some data
   set.seed(1)
